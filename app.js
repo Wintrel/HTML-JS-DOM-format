@@ -12,30 +12,34 @@ function genereateRandomNumber() {
 
 let RandomNumber = genereateRandomNumber()
 console.log(RandomNumber)
+UserAttempts = 0
 
 
 
 function guessNumber() {
     UserGuess = Number(inputbar.value)
-    let UserAttempts = 0
 
     switch (true) {
         case (UserGuess === RandomNumber):
             resultDiv.innerHTML = `guessed the number ${RandomNumber} correctly in ${UserAttempts} attempts.`
-            RandomNumber = genereateRandomNumber()
+            newNumber = genereateRandomNumber()
+            RandomNumber = newNumber
+            console.log(newNumber)
+            UserAttempts = 0
             console.log("guessed the number")
-            UserAttempts + 1
             break
         case (UserGuess < RandomNumber):
             resultDiv.innerHTML = "Too low"
+            UserAttempts++
             console.log("too low")
-            UserAttempts + 1
             break
         case (UserGuess > RandomNumber):
             resultDiv.innerHTML = "Too high"
+            UserAttempts++
             console.log("too high")
-            UserAttempts + 1
             break
+        default:
+            UserAttempts++
     }
 
     history()
